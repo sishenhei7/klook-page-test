@@ -32,11 +32,13 @@
   "homepage": "https://github.com/sishenhei7/klook-page-test#readme",
   "dependencies": {
     "chalk": "^4.1.0",
+    "fs-extra": "^9.0.1",
     "puppeteer": "^5.4.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
+    "@types/fs-extra": "^9.0.3",
     "@types/progress": "^2.0.3",
     "@types/puppeteer": "^5.4.0",
     "@typescript-eslint/eslint-plugin": "^4.6.1",

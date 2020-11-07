@@ -6,9 +6,8 @@ export default async (ctx: any) => {
     waitUntil: 'load',
     timeout: 0,
   })
-  // await ctx.page.waitForTimeout(1000);
-  // const performanceMetrics = await ctx.client.send('Performance.getMetrics');
 
+  // FMP
   let firstMeaningfulPaint = 0
   let performanceMetrics
   while (firstMeaningfulPaint === 0) {
@@ -16,16 +15,27 @@ export default async (ctx: any) => {
     performanceMetrics = await ctx.client.send('Performance.getMetrics')
     firstMeaningfulPaint = getTimeFromPerformanceMetrics(performanceMetrics, 'FirstMeaningfulPaint')
   }
+  firstMeaningfulPaint = extractDataFromPerformanceMetrics(performanceMetrics, 'FirstMeaningfulPaint')
+    .FirstMeaningfulPaint
 
-  // const performanceTiming = JSON.parse(
-  //   await ctx.page.evaluate(() => JSON.stringify(window.performance.timing))
-  // );
-  // return {
-  //   metrics: JSON.stringify(performanceMetrics),
-  //   timing: JSON.stringify(performanceTiming),
-  //   fmp: firstMeaningfulPaint
-  // }
-  const fmp = extractDataFromPerformanceMetrics(performanceMetrics, 'FirstMeaningfulPaint')
-  ctx.bar.tick('fetching fmp')
-  return fmp
+  // ttfb
+  const performanceTiming = JSON.parse(await ctx.page.evaluate(() => JSON.stringify(window.performance.timing)))
+  const timeToFirstByte = performanceTiming.responseStart - performanceTiming.requestStart
+
+  // fp
+  const firstPaint = JSON.parse(
+    await ctx.page.evaluate(() => JSON.stringify(performance.getEntriesByName('first-paint'))),
+  )[0].startTime
+
+  // fcp
+  const firstContentfulPaint = JSON.parse(
+    await ctx.page.evaluate(() => JSON.stringify(performance.getEntriesByName('first-contentful-paint'))),
+  )[0].startTime
+
+  return {
+    TTFB: timeToFirstByte,
+    FP: firstPaint,
+    FCP: firstContentfulPaint,
+    FMP: firstMeaningfulPaint,
+  }
 }

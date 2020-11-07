@@ -5,13 +5,14 @@ export type work = (options: any) => any
 export type clientOptions = {
   runs: number
   url: string
+  type?: 'desktop' | 'mobile'
   works: work[]
 }
 
-// const iPhone = puppeteer.devices['iPhone 8'];
+const iPhone = puppeteer.devices['iPhone 8']
 
 export const client = async (options: clientOptions) => {
-  const { runs, url, works } = options
+  const { runs, url, type, works } = options
   const res = [] as any
 
   const bar = new MyProgressBar({
@@ -25,7 +26,10 @@ export const client = async (options: clientOptions) => {
     for (let i = 0, j = works.length; i < j; ++i) {
       const page = await browser.newPage()
       const client = await page.target().createCDPSession()
-      // await page.emulate(iPhone);
+
+      if (type === 'mobile') {
+        await page.emulate(iPhone)
+      }
 
       const result = await works[i]({ client, page, bar, url })
 

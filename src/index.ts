@@ -1,11 +1,15 @@
 import { client } from './client'
+import writer from './writer'
 import metrics from './plugins/metrics'
+import timing from './plugins/timing'
 
-const test = async (url: string, runs = 1) => {
-  const works = [metrics]
+const test = async (url: string, runs = 1, file?: string) => {
+  const works = [metrics, timing]
   const res = await client({ runs, url, works })
+
   console.log('result', res)
-  process.exit()
+
+  writer(JSON.stringify(res), file)
 }
 
-test('https://www.klook.com', 5)
+test('http://localhost:7080/', 1, 'result.json')
