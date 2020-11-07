@@ -10,6 +10,8 @@ const test = async (url: string, runs = 1, file?: string) => {
   console.log('result', res)
 
   writer(JSON.stringify(res), file)
+
+  return res
 }
 
 test('http://localhost:7080/', 1, 'result.json')
