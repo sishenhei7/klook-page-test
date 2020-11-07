@@ -1,2 +1,5 @@
 # klook-page-test
-pageTest for klook ssr
+
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
+> pageTest for klook ssr
