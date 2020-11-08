@@ -24,3 +24,4 @@
 1. [Web Performance Recipes With Puppeteer](https://addyosmani.com/blog/puppeteer-recipes/#performance-observer-lcp)
 2. [Test website performance with Puppeteer](https://michaljanaszek.com/blog/test-website-performance-with-puppeteer/#firstMeaningfulPaint)
 3. [Puppeteer性能优化与执行速度提升](https://juejin.im/post/6844903849086582798)
+4. [Which Web Performance metrics should you measure?](https://perfbeacon.com/blog/which-web-performance-metrics-should-i-measure/)

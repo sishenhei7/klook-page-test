@@ -2,9 +2,10 @@ import { client } from './client'
 import writer from './writer'
 import metrics from './plugins/metrics'
 import timing from './plugins/timing'
+import screenshots from './plugins/screenshots'
 
 const test = async (url: string, runs = 1, file?: string) => {
-  const works = [metrics, timing]
+  const works = [metrics, timing, screenshots]
   const res = await client({ runs, url, works })
 
   console.log('result', res)
@@ -14,4 +15,4 @@ const test = async (url: string, runs = 1, file?: string) => {
   return res
 }
 
-test('http://localhost:7080/', 1, 'result.json')
+test('http://localhost:7080', 1, 'result.json')
