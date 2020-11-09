@@ -16,7 +16,7 @@ export const client = async (options: clientOptions) => {
   const res = [] as any
 
   const bar = new MyProgressBar({
-    title: 'desktop',
+    title: type === 'desktop' ? 'desktop' : 'mobile',
     total: runs * works.length,
   })
 
@@ -28,6 +28,7 @@ export const client = async (options: clientOptions) => {
       const client = await page.target().createCDPSession()
 
       if (type === 'mobile') {
+        await client.send('Emulation.setCPUThrottlingRate', { rate: 6 })
         await page.emulate(iPhone)
       }
 
@@ -36,6 +37,7 @@ export const client = async (options: clientOptions) => {
       res.push(result)
 
       await page.close()
+      bar.tick('')
     }
 
     await browser.close()

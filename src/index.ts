@@ -2,11 +2,12 @@ import { client } from './client'
 import writer from './writer'
 import metrics from './plugins/metrics'
 import timing from './plugins/timing'
-import screenshots from './plugins/screenshots'
+// import noJsScreenshot from './plugins/no-js-screenshot'
+import screenshot from './plugins/screenshot'
 
 const test = async (url: string, runs = 1, file?: string) => {
-  const works = [metrics, timing, screenshots]
-  const res = await client({ runs, url, works })
+  const works = [metrics, timing, screenshot]
+  const res = await client({ runs, url, works, type: 'mobile' })
 
   console.log('result', res)
 
@@ -15,4 +16,5 @@ const test = async (url: string, runs = 1, file?: string) => {
   return res
 }
 
-test('http://localhost:7080', 1, 'result.json')
+test('https://www.klook.com/zh-CN/', 5, 'result.json')
+// test('https://www.bilibili.com/', 5, 'result.json')

@@ -12,6 +12,7 @@
 - [x] 支持插件系统(待完善，需要实现可接入外部插件)
 - [x] metrics 插件，主要有 TTFB、FP、FCP、FMP
 - [x] timing 插件，主要根据```performance.timing api```得出的各个性能信息
+- [x] screenshots 和 no-js-screenshots 插件
 - [x] 支持数据导出到文件
 - [x] progressbar 人性化显示(后续会替换成 ora)
 - [ ] 增加 cli

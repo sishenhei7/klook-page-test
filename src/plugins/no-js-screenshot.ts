@@ -1,7 +1,7 @@
 export default async (ctx: any) => {
   await ctx.page.setRequestInterception(true)
 
-  // no-js screenshots
+  // no-js screenshot
   ctx.page.on('request', (request: any) => {
     if (request.resourceType() === 'script') {
       request.abort()
@@ -15,5 +15,5 @@ export default async (ctx: any) => {
     timeout: 0,
   })
 
-  await ctx.page.screenshot({ path: 'screenshots.png', fullPage: true })
+  await ctx.page.screenshot({ path: 'screenshot.png', fullPage: true })
 }
