@@ -17,6 +17,8 @@
 - [x] progressbar 人性化显示(后续会替换成 ora)
 - [ ] 增加 cli
 - [ ] 多任务时自动求平均值
+- [ ] 加入 loadtest api 测试网站高并发性能
+- [ ] 使用 puppeteer-core 替换 puppeteer
 - [ ] 使用 cluster 提升性能
 - [ ] 单元测试
 
