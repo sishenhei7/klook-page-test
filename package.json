@@ -31,9 +31,11 @@
   },
   "homepage": "https://github.com/sishenhei7/klook-page-test#readme",
   "dependencies": {
+    "@types/puppeteer-core": "^2.0.0",
     "chalk": "^4.1.0",
     "fs-extra": "^9.0.1",
-    "puppeteer": "^5.4.1"
+    "puppeteer": "^5.4.1",
+    "puppeteer-core": "^5.4.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",

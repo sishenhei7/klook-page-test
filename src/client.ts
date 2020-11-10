@@ -1,5 +1,6 @@
-import puppeteer from 'puppeteer'
+import puppeteer from 'puppeteer-core'
 import { MyProgressBar } from './progressBar'
+import { findChrome } from './find-chrome'
 
 export type work = (options: any) => any
 export type clientOptions = {
@@ -21,7 +22,10 @@ export const client = async (options: clientOptions) => {
   })
 
   for (let k = 0; k < runs; ++k) {
-    const browser = await puppeteer.launch()
+    const browser = await puppeteer.launch({
+      executablePath: findChrome(),
+      // headless: false,
+    })
 
     for (let i = 0, j = works.length; i < j; ++i) {
       const page = await browser.newPage()

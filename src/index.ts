@@ -16,5 +16,5 @@ const test = async (url: string, runs = 1, file?: string) => {
   return res
 }
 
-test('https://www.klook.com/zh-CN/', 5, 'result.json')
-// test('https://www.bilibili.com/', 5, 'result.json')
+test('https://www.klook.com/zh-CN/', 1, 'result.json')
+// test('https://www.bilibili.com/', 1, 'result.json')
